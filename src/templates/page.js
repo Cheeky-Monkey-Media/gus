@@ -9,6 +9,8 @@ import Widget from 'components/shared/widget';
 import CustomFooter from 'components/shared/customFooter';
 import { contentExists } from 'utils/ug-utils';
 
+import WidgetBlock from 'components/shared/widgetBlock';
+
 const Page = ({nodeID, pageTitle, ogDescription, ogImage, ogImageAlt, imageData, widgets, footer, menuName}) => (
     <Layout menuName={menuName}>
         <Helmet bodyAttributes={{ class: 'basic-page' }} />
@@ -91,6 +93,10 @@ export const query = graphql`
       drupal_id
       menu_name
     }
+
+    blockContentWidgetBlock {
+      
+    } ...WidgetBlockQuery
 }
 `
 
