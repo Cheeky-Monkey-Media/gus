@@ -298,11 +298,12 @@ const ProgramPage = ({data, location}) => {
         <Seo title={title} description={ogDescription} img={ogImage} imgAlt={ogImageAlt} />
       
         { /**** Header and Title ****/ }
-        <div className={!heroImage?.length>0 && !videoData?.length>0 ? "no-thumb" : null} id="rotator">
+        <div className={!heroImage?.length>0 && !videoData ? "no-thumb" : null} id="rotator">
             {videoData ?
-            <div className="position-absolute top-50 start-50">
+            <div className="position-absolute top-50 start-50 translate-middle">
             <ModalVideo videoURL={videoData.field_media_oembed_video} videoWidth={videoData.field_video_width} videoHeight={videoData.field_video_height} videoTranscript={videoData.relationships.field_media_file?.localFile.publicURL} />
-            </div>:
+            </div>
+            :
             <Hero imgData={heroImage} />
             }
             <div className="container ft-container"><h1 className="fancy-title">{title}</h1></div>

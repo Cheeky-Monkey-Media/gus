@@ -5,7 +5,6 @@ import Video from "components/shared/video"
 import Overlay from "components/shared/overlay"
 
 function ModalVideo(props) {
-    console.log(props.videoURL);
     if (props.videoURL) {
         const videoURL = props.videoURL;
         const videoType = (props.videoURL?.includes("youtube") || props.videoURL?.includes("youtu.be") ? `youtube` : `vimeo`);
@@ -13,7 +12,7 @@ function ModalVideo(props) {
         return (
         <Overlay>
             <Overlay.ModalButton id={`modal-${videoID}`} className="btn-primary my-4">
-                <i className="fa-solid fa-play"></i> Watch Video<span className="visually-hidden">: {props.videoTitle}</span>
+                <i className="fad fa-play-circle"></i> Watch Video<span className="visually-hidden">: {props.videoTitle}</span>
             </Overlay.ModalButton>
             <Overlay.Modal id={`modal-${videoID}`}>
                 <Video videoID={videoID} videoType={videoType} playerID={`player-${videoID}`} videoTranscript={props.videoTranscript} videoCC={props.videoCC} />
