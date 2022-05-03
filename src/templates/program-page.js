@@ -300,7 +300,7 @@ const ProgramPage = ({data, location}) => {
         { /**** Header and Title ****/ }
         <div className={!heroImage?.length>0 && !videoData ? "no-thumb" : null} id="rotator">
             {videoData ?
-            <div className="position-absolute top-50 start-50 translate-middle">
+            <div className="position-absolute top-50 start-50">
             <ModalVideo videoURL={videoData.field_media_oembed_video} videoWidth={videoData.field_video_width} videoHeight={videoData.field_video_height} videoTranscript={videoData.relationships.field_media_file?.localFile.publicURL} />
             </div>
             :
