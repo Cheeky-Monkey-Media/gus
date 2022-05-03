@@ -10,11 +10,13 @@ import Courses from 'components/shared/courses';
 import CustomFooter from 'components/shared/customFooter';
 import Degrees from 'components/shared/degrees';
 import Employers from 'components/shared/employers';
-import HeroVideo from 'components/shared/heroVideo';
+//import HeroVideo from 'components/shared/heroVideo';
+import ModalVideo from 'components/shared/modalVideo';
 import NewsGrid from 'components/shared/newsGrid';
 import Stats from 'components/shared/stats'
 import Testimonials from 'components/shared/testimonial';
 import Variants from 'components/shared/variants';
+import Video from "components/shared/video";
 import Widget from 'components/shared/widget';
 import { sortLastModifiedDates } from 'utils/ug-utils';
 import { graphql } from 'gatsby';
@@ -266,6 +268,8 @@ const ProgramPage = ({data, location}) => {
     let variantData = progData.relationships?.field_program_variants;
     let variantDataHeading = prepareVariantHeading(variantData);
     let videoData = data.videos.edges[0]?.node;
+    
+    //console.log(videoData);
   
     const heroImage = (imageData?.length>0 ? imageData : (imageTaggedData?.length>0 ? imageTaggedData : null));
     
@@ -296,8 +300,9 @@ const ProgramPage = ({data, location}) => {
         { /**** Header and Title ****/ }
         <div className={!heroImage?.length>0 && !videoData?.length>0 ? "no-thumb" : null} id="rotator">
             {videoData ?
-            <HeroVideo videoURL={videoData.field_media_oembed_video} videoWidth={videoData.field_video_width} videoHeight={videoData.field_video_height} videoTranscript={videoData.relationships.field_media_file?.localFile.publicURL} />
-            :
+            <div className="position-absolute top-50 start-50">
+            <ModalVideo videoURL={videoData.field_media_oembed_video} videoWidth={videoData.field_video_width} videoHeight={videoData.field_video_height} videoTranscript={videoData.relationships.field_media_file?.localFile.publicURL} />
+            </div>:
             <Hero imgData={heroImage} />
             }
             <div className="container ft-container"><h1 className="fancy-title">{title}</h1></div>
